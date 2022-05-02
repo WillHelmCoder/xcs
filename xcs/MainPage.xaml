@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="xcs.MainPage"
+             xmlns:local="clr-namespace:xcs"
+             xmlns:Mlocal="clr-namespace:xcs.Models"             
+             BackgroundColor="{DynamicResource PrimaryColor}">
+    <ContentPage.BindingContext>
+        <Mlocal:PersonPageViewModel/>
+    </ContentPage.BindingContext>
+
+
+
+
+    <ScrollView>  
+        <VerticalStackLayout>
+
+         
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90" />
+                    <RowDefinition Height="60" />
+                   
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+             
+
+                <Label Text="Total Coins"
+                       Grid.Column="0"
+                       Grid.Row="0"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+                <Label Text="Given"
+                        Grid.Column="1"
+                       Grid.Row="0"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+                <Label Text="To Give"
+                       Grid.Column="2"
+                       Grid.Row="0"
+               HorizontalOptions="Center"
+                       
+               VerticalOptions="Center" />
+
+
+                <Label Text="{Binding Account.TotalXipeCoins}"
+                       Grid.Column="0"
+                       Grid.Row="1"
+                     
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+                <Label Text="{Binding Account.XipeCoinsGiven}"
+                        Grid.Column="1"
+                       Grid.Row="1"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+                <Label Text="{Binding Account.XipeCoinsToGive}"
+                       Grid.Column="2"
+                       Grid.Row="1"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+
+            </Grid>
+
+
+            <Label 
+                                    Text="{Binding Person.LastName}"
+                                    FontAttributes="Italic"
+                                    VerticalOptions="End"
+                                    TextColor="#fff"/>
+
+            <ListView ItemsSource="{Binding Persons}" HasUnevenRows="True" SelectionMode="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell IsEnabled="False">
+                            <StackLayout>
+                                <Label 
+                                    Text="{Binding FirstName}"
+                                    FontAttributes="Bold" />
+                                <Label 
+                                    Text="{Binding LastName}"
+                                    FontAttributes="Italic"
+                                    VerticalOptions="End" />
+                                <Label 
+                                    Text="{Binding XipeCoins}"
+                                    FontAttributes="Italic"
+                                    VerticalOptions="End" />
+                                <Button 
+                                    Text="Delete" 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type Mlocal:PersonPageViewModel}}, Path=GiveXipecoins}"
+                                    CommandParameter="{Binding .}"
+                                    />
+                                <Button 
+                                    Text="Otro" 
+                                    Command="{Binding PostAddXc}"
+                                    />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>  
+
+
+            <Button
+                Text="Add Person"
+                FontAttributes="Bold"
+				Command="{Binding PostPeople}"
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
