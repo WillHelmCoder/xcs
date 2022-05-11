@@ -12,24 +12,36 @@
         <Mlocal:LoginViewModel/>
     </ContentPage.BindingContext>
 
-    <StackLayout>
+    <StackLayout Margin="30,150,30,10">
+        <Label Text="WALLET" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center"
+               TextColor="#000"
+               FontAttributes="Bold"
+               FontSize="Large">
+            
+        </Label>
 
-        <Entry Text="{Binding User }" Placeholder="User Name"></Entry>
+        <Entry Text="{Binding User }" Placeholder="User Name" 
+               TextColor="Black" 
+               PlaceholderColor="#666"
+               Margin="0,20,0,0">            
+        </Entry>
 
-        <Entry Text="{Binding Password }" Placeholder="Password" IsPassword="True"></Entry>
+        <Entry Text="{Binding Password }" Placeholder="Password" 
+               IsPassword="True"
+               TextColor="Black"
+               PlaceholderColor="#666"
+               Margin="0,20,0,0"
+               >            
+        </Entry>
         <Button
                 Text="Log In"
                 FontAttributes="Bold"
 				Command="{Binding LoginCommand}"
-                HorizontalOptions="Center" />
+                HorizontalOptions="FillAndExpand"
+                Margin="0,20,0,0"
+            />
 
-        <Button
-                Text="Log Out"
-                FontAttributes="Bold"
-				Command="{Binding LogOutCommand}"
-                HorizontalOptions="Center" />
+       
 
     </StackLayout>
-
-
 </ContentPage>
