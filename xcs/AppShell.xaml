@@ -6,9 +6,19 @@
     xmlns:local="clr-namespace:xcs"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Hello, World!"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+
+
+
+    <TabBar>
+
+        <Tab  Title="MainPage" >
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" Title="Wallet"/>
+        </Tab>
+        <Tab Title="Login">
+            <ShellContent Title="Xipe Wallet"  ContentTemplate="{DataTemplate local:Login}"  Route="Login"  />
+        </Tab>
+    </TabBar>
+
+
 
 </Shell>

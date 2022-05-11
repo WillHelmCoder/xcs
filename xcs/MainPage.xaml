@@ -3,24 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="xcs.MainPage"
              xmlns:local="clr-namespace:xcs"
-             xmlns:Mlocal="clr-namespace:xcs.Models"             
-             BackgroundColor="{DynamicResource PrimaryColor}">
+             xmlns:Mlocal="clr-namespace:xcs.Models"   
+             BackgroundColor="Black">
+
+    <!--BackgroundColor="{DynamicResource PrimaryColor}">-->
+    
+    
     <ContentPage.BindingContext>
         <Mlocal:PersonPageViewModel/>
     </ContentPage.BindingContext>
 
-
-
-
-    <ScrollView>  
-        <VerticalStackLayout>
-
-         
+    <StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="90" />
-                    <RowDefinition Height="60" />
-                   
+                    <RowDefinition Height="120" />
+
+
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -28,93 +26,178 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
+
+                <Frame Grid.Column="0"
+                       Grid.Row="0"
+                       BackgroundColor="#222"
+                       CornerRadius="5"
+                       VerticalOptions="FillAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       Margin="2,2,2,2">
+                    
+                    <StackLayout>
+                        <Label Text="Total Coins"                       
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Center" 
+                                TextColor="White"/>
+                        <Label 
+                        Text="{Binding Account.TotalXipeCoins}"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Center" 
+                        TextColor="#fff"/>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Grid.Column="1"
+                       Grid.Row="0"
+                       BackgroundColor="#222"
+                       CornerRadius="5"
+                       VerticalOptions="FillAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       Margin="2,2,2,2"
+                       >
+
+                    <StackLayout>
+                        <Label Text="Coins to give"                       
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Center" 
+                                TextColor="White"/>
+
+                        <Label Text="{Binding Account.XipeCoinsToGive}"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Center" 
+                                TextColor="White"/>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Grid.Column="2"
+                       Grid.Row="0"
+                       BackgroundColor="#222"
+                       CornerRadius="5"
+                       VerticalOptions="FillAndExpand"
+                       HorizontalOptions="FillAndExpand"                       
+                       Margin="2,2,2,2"
+                         >
+
+                    <StackLayout>
+                        <Label Text="Given Coins"                       
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Center"
+                                TextColor="White"/>
+
+                        <Label Text="{Binding Account.XipeCoinsGiven}"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        VerticalOptions="Center"
+                                TextColor="White"/>
+                    </StackLayout>
+                </Frame>
+
              
-
-                <Label Text="Total Coins"
-                       Grid.Column="0"
-                       Grid.Row="0"
-               HorizontalOptions="Center"
-               VerticalOptions="Center" />
-
-                <Label Text="Given"
-                        Grid.Column="1"
-                       Grid.Row="0"
-               HorizontalOptions="Center"
-               VerticalOptions="Center" />
-
-                <Label Text="To Give"
-                       Grid.Column="2"
-                       Grid.Row="0"
-               HorizontalOptions="Center"
-                       
-               VerticalOptions="Center" />
-
-
-                <Label Text="{Binding Account.TotalXipeCoins}"
-                       Grid.Column="0"
-                       Grid.Row="1"
-                     
-               HorizontalOptions="Center"
-               VerticalOptions="Center" />
-
-                <Label Text="{Binding Account.XipeCoinsGiven}"
-                        Grid.Column="1"
-                       Grid.Row="1"
-               HorizontalOptions="Center"
-               VerticalOptions="Center" />
-
-                <Label Text="{Binding Account.XipeCoinsToGive}"
-                       Grid.Column="2"
-                       Grid.Row="1"
-               HorizontalOptions="Center"
-               VerticalOptions="Center" />
-
             </Grid>
-
-
-            <Label 
-                                    Text="{Binding Person.LastName}"
-                                    FontAttributes="Italic"
-                                    VerticalOptions="End"
-                                    TextColor="#fff"/>
-
-            <ListView ItemsSource="{Binding Persons}" HasUnevenRows="True" SelectionMode="None">
+    
+           
+                
+            <ListView ItemsSource="{Binding Persons}"   Margin="5,5,15,15" VerticalScrollBarVisibility="Always" RowHeight="100" VerticalOptions="FillAndExpand" SelectionMode="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell IsEnabled="False">
-                            <StackLayout>
-                                <Label 
-                                    Text="{Binding FirstName}"
-                                    FontAttributes="Bold" />
-                                <Label 
-                                    Text="{Binding LastName}"
-                                    FontAttributes="Italic"
-                                    VerticalOptions="End" />
-                                <Label 
-                                    Text="{Binding XipeCoins}"
-                                    FontAttributes="Italic"
-                                    VerticalOptions="End" />
+                        <ViewCell>
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"  />
+                                    <ColumnDefinition Width="60" />
+                                    <ColumnDefinition Width="40" />
+                                    <ColumnDefinition Width="60" />
+
+                                </Grid.ColumnDefinitions>
+
+
+
+                                <Label   
+                                    Grid.Column="0"
+                                    Grid.Row="0"
+                                    Text="{Binding FullName} "
+                                    FontAttributes="Bold"                                      
+                                    HorizontalTextAlignment="Start"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalTextAlignment="Center"
+                                    FontSize="Small"
+                                    Margin="10,0,0,0"
+                                    TextColor="White"/>
+
                                 <Button 
-                                    Text="Delete" 
+                                    Grid.Column="1"
+                                    Grid.Row="0"
+                                    Text="-"                                     
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type Mlocal:PersonPageViewModel}}, Path=TakeBackXipecoins}"
+                                    CommandParameter="{Binding .}"
+                                    FontSize="20"
+                                    HeightRequest="60"
+                                    WidthRequest="60"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"  
+                                    BackgroundColor="#ff0000"
+                                    TextColor="White"
+                                    CornerRadius="100"
+                                    />
+                                <Label 
+                                    Grid.Column="2"
+                                    Grid.Row="0"
+                                    Text="{Binding XipeCoins}"
+                               
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                     TextColor="White"
+                                    />
+                                <Button 
+                                    Grid.Column="3"
+                                    Grid.Row="0"
+                                    Text="+"                                  
+                                    BackgroundColor="#005500"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type Mlocal:PersonPageViewModel}}, Path=GiveXipecoins}"
                                     CommandParameter="{Binding .}"
+                                    HeightRequest="60"
+                                    WidthRequest="60"
+                                    VerticalOptions="Center" 
+                                    CornerRadius="100"
+                                    HorizontalOptions="Center"    
+                                    FontSize="20"
+                                    TextColor="White"
                                     />
-                                <Button 
-                                    Text="Otro" 
-                                    Command="{Binding PostAddXc}"
-                                    />
-                            </StackLayout>
+
+
+
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>  
+            </ListView>
 
-
-            <Button
+        <Button
                 Text="Add Person"
                 FontAttributes="Bold"
 				Command="{Binding PostPeople}"
                 HorizontalOptions="Center" />
-        </VerticalStackLayout>
-    </ScrollView>
+    </StackLayout>
+
+
+        
+
+            
+
+
+            
+      
+    
 </ContentPage>

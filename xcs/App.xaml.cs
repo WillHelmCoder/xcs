@@ -6,6 +6,18 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new AppShell();
+
+		if (Preferences.Get("SessionStatus", "Default")!="valid") {
+
+			MainPage = new Login();
+			//MainPage = new AppShell();
+		}
+        else
+        {
+			//MainPage = new AppShell();
+			MainPage = new Login();
+		}
+
+		
 	}
 }

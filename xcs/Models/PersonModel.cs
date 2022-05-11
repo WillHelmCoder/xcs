@@ -10,7 +10,12 @@ namespace xcs.Models
 {
     public class PersonModel : INotifyPropertyChanged
     {
-
+        Guid guid;
+        public Guid Guid
+        {
+            get { return guid; }
+            set { guid = value; OnPropertyChanged(nameof(guid)); }
+        }
 
         int id;
         public int Id
@@ -21,6 +26,8 @@ namespace xcs.Models
                 id = value; OnPropertyChanged(nameof(Id));
             }
         }
+       
+
 
         string firstName;
         public string FirstName
@@ -48,6 +55,17 @@ namespace xcs.Models
             get { return xipeCoins; }
             set { xipeCoins = value; OnPropertyChanged(nameof(XipeCoins)); }
         }
+
+        int coffee;
+       public int Coffee
+        {
+            get { return coffee; }
+            set { coffee = value; OnPropertyChanged(nameof(XipeCoins)); }
+        }
+
+        string fullName;
+        public string FullName=> $"{FirstName} {" "} {LastName}";
+
         public ICommand PostAddXc { get; }
 
 
