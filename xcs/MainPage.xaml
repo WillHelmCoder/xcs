@@ -5,27 +5,18 @@
              xmlns:local="clr-namespace:xcs"
              xmlns:Mlocal="clr-namespace:xcs.Models"   
              BackgroundColor="White"
-             Title="Cycle Information"             
-             >
-   
+             Title="Cycle Information">
 
-        <!--<ContentPage.BindingContext>
-        <Mlocal:PersonPageViewModel/>
-    </ContentPage.BindingContext>-->
     
-        <StackLayout>
-
-
+        <StackLayout>            
             <Grid Margin="0,20,0,0" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="90" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-
                 <StackLayout Grid.Column="1"
                        Grid.Row="0">
                     <StackLayout HorizontalOptions="Center">
@@ -36,7 +27,6 @@
                         TextColor="Black"/>
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
-
                         <Label Text="{Binding DaysLeft, Mode=TwoWay}"
                         FontSize="40"
                          HorizontalOptions="FillAndExpand"
@@ -44,15 +34,10 @@
                         VerticalOptions="Center" 
                         TextColor="Black"/>
                     </StackLayout>
-
-
-
                 </StackLayout>
-
-
                 <StackLayout Grid.Column="0"
                        Grid.Row="0"
-                             Padding="50,0,0,0">
+                       Padding="50,0,0,0">
                     <StackLayout>
                         <Label Text="Assigned coins"                       
                         HorizontalOptions="FillAndExpand"
@@ -72,16 +57,9 @@
                         HorizontalTextAlignment="Center"
                         VerticalOptions="Center" 
                         TextColor="Black"/>
-                    </StackLayout>
-
-
-
+                    </StackLayout>                
                 </StackLayout>
-
-
             </Grid>
-
-
             <Frame 
             IsVisible="{Binding IsCycleEnd, Mode=TwoWay}"
             BorderColor="#f4f4f4"
@@ -113,24 +91,16 @@
                     Text="Send Balance" BackgroundColor="#f00"/>
                 </Grid>
             </Frame>
-
             <StackLayout HeightRequest="1" BackgroundColor="#ccc" Margin="0,10,0,0"></StackLayout>
             <ListView ItemsSource="{Binding Persons, Mode=TwoWay}"   
                   Margin="5,5,15,15" 
                   VerticalScrollBarVisibility="Always" 
                   RowHeight="100" 
                   VerticalOptions="FillAndExpand" 
-                  SelectionMode="None"
-                  >
-
-
-            
-            <ListView.ItemTemplate>  
-              
+                  SelectionMode="None">            
+            <ListView.ItemTemplate>
                     <DataTemplate>                    
-                        <ViewCell>
-                            
-                            
+                        <ViewCell> 
                         <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="100"/>
@@ -141,15 +111,13 @@
                                     <ColumnDefinition Width="40"/>
                                     <ColumnDefinition Width="60"/>
                                 </Grid.ColumnDefinitions>
-
                             <Button   
                                     Grid.Column="0"
                                     Grid.Row="0"
                                     Grid.ColumnSpan="1"
                                     Text="{Binding FullName, Mode=TwoWay}"
                                     FontAttributes="Bold"  
-                                    VerticalOptions="FillAndExpand"
-                                                                    
+                                    VerticalOptions="FillAndExpand"                                                                   
                                     FontSize="Small"
                                     Margin="0,0,0,0"
                                     BackgroundColor="#fff"
@@ -157,9 +125,7 @@
                                     Padding="10,0,0,0"
                                     HorizontalOptions="Start"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type Mlocal:PersonPageViewModel}}, Path=LaunchModal}"
-                                    CommandParameter="{Binding .}"
-                                    >  
-                                    
+                                    CommandParameter="{Binding .}">                                      
                             </Button>
                             <Button 
                                     Grid.Column="1"
@@ -182,8 +148,7 @@
                                     TextColor="#000"
                                     VerticalOptions="Center"
                                     HorizontalOptions="Center"
-                                    HorizontalTextAlignment="Center">                          
-
+                                    HorizontalTextAlignment="Center"> 
                             </Label>
                                 <Button 
                                     Grid.Column="3"

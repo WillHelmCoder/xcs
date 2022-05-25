@@ -15,14 +15,19 @@ namespace xcs.Models
 
         public SettingsPageViewModel()
         {
-           Preferences.Set("cyclestartingdate", DateTime.Now.ToString());
-           Preferences.Set("daysofcycle", "30");
+           
             var cyclestartingdate = DateTime.Parse(Preferences.Get("cyclestartingdate", "12/12/2022"));
             var daysofcycle = int.Parse(Preferences.Get("daysofcycle", "Default"));
             if (cyclestartingdate != null || daysofcycle != 0)
             {
                 CycleStartingDate = cyclestartingdate;
                 DaysOfCycle = daysofcycle;
+            }
+            else
+            {
+                Preferences.Set("cyclestartingdate", DateTime.Now.ToString());
+                Preferences.Set("daysofcycle", "30");
+                    //Recordar cuidar este detalle para cuando la app es nueva
             }
             LogoutCommand = new Command(Logout);
             SaveSettingsCommand = new Command(SaveCycleSettings);
@@ -43,9 +48,9 @@ namespace xcs.Models
             Preferences.Set("cyclestartingdate", cycleStartingDate);
             Preferences.Set("daysofcycle", daysOfCycle);
 
+            Application.Current.MainPage = new AppShell();
 
-
-            Shell.Current.GoToAsync("///MainPage");
+            //Shell.Current.GoToAsync("///MainPage");
         }
 
     }

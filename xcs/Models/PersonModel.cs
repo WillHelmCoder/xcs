@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-
+﻿using System.ComponentModel;
 namespace xcs.Models
 {
     public class PersonModel : INotifyPropertyChanged
@@ -17,7 +9,6 @@ namespace xcs.Models
             get { return guid; }
             set { guid = value; OnPropertyChanged(nameof(guid)); }
         }
-
         int id;
         public int Id
         {
@@ -26,25 +17,20 @@ namespace xcs.Models
             {
                 id = value; OnPropertyChanged(nameof(Id));
             }
-        }
-       
-
+        }  
         string firstName;
         public string FirstName
         {
             get { return firstName; }
             set { firstName = value; OnPropertyChanged(nameof(FirstName)); }
         }
-
         string lastName;
         public string LastName
         {
             get { return lastName; }
             set { lastName = value; OnPropertyChanged(nameof(LastName)); }
         }
-
         //string fullName;
-
         public string FullName => $"{FirstName} {" "} {LastName}";
         //public string FullName
         //{
@@ -57,37 +43,23 @@ namespace xcs.Models
             get { return email; }
             set { email = value; OnPropertyChanged(nameof(Email)); }
         }
-
         int xipeCoins;
         public int XipeCoins
         {
             get { return xipeCoins; }
             set { xipeCoins = value; OnPropertyChanged(nameof(XipeCoins)); }
-        }
-
-        int coffee;
-       public int Coffee
-        {
-            get { return coffee; }
-            set { coffee = value; OnPropertyChanged(nameof(XipeCoins)); }
-        }
-
+        }  
         bool talk;
-            public bool Talk
+        public bool Talk
         {
             get { return talk; }
             set { talk = value; OnPropertyChanged(nameof(Talk)); }
-        }
-
-   
+        }   
         public PersonModel()
         {
             
 
         }
-
-
-
         public event PropertyChangedEventHandler PropertyChanged;
         void OnPropertyChanged(string name) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
@@ -95,20 +67,11 @@ namespace xcs.Models
         {
 
         }
-
-
         public void ClearFields()
         {
             FirstName = string.Empty;
             LastName = string.Empty;
             Email = string.Empty;
-
         }
-
-
-
-
-       
-
     }
 }

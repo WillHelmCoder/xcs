@@ -11,17 +11,17 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="*"/>
-                
+
                 <RowDefinition Height="19"/>
                 <RowDefinition Height="56"/>
-                
+
                 <RowDefinition Height="*"/>
-                
+
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                
+
             </Grid.ColumnDefinitions>
             <Label 
                Text= "{Binding FullName}"            
@@ -35,8 +35,8 @@
             <Switch 
                     Grid.Row="2"
                     Grid.Column="1"
-                    BindingContext="{Binding FirstName, Mode=TwoWay}"                    
-             />            
+                    IsToggled="{Binding Talk}"
+             />
             <Label 
                Text= "We need to talk"            
                TextColor="#000"               
@@ -44,16 +44,16 @@
                Grid.Row="2"
                Grid.Column="0"
                VerticalOptions="Start">
-        </Label>            
+            </Label>
             <Entry  Placeholder="Subject"               
                TextColor="Black"
                PlaceholderColor="#666"
                Margin="0,20,0,0"
                Grid.Row="3"
                Grid.Column="0"
-               VerticalOptions="Start"               
+               VerticalOptions="Start" 
                >
-        </Entry>            
+            </Entry>
             <Button
                 Text="Save Reminder"
                 FontAttributes="Bold"
