@@ -70,8 +70,15 @@ public class PersonPageViewModel : INotifyPropertyChanged
     }
     public void FnCycleChecker()
     {
-        DateTime startingDate = DateTime.Parse(Preferences.Get("cyclestartingdate", "Default"));
-        int cycleDays = int.Parse(Preferences.Get("daysofcycle", "Default"));
+        string cycleKey = "cyclestartingdate";
+        string daysKey = "daysofcycle";
+
+
+        DateTime initDate = new DateTime(2022, 12, 12);
+        DateTime cyclestartingdate = Preferences.Get(cycleKey, initDate);
+
+        DateTime startingDate = cyclestartingdate;
+        int cycleDays = Preferences.Get(daysKey, 30);
         DateTime endingDate = startingDate.AddDays(cycleDays);
         DaysLeft = (endingDate - DateTime.Now).Days;
         if (DaysLeft <= 2)
