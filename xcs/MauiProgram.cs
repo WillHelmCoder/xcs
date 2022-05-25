@@ -1,4 +1,7 @@
-﻿namespace xcs;
+﻿using xcs.Models;
+using xcs.Services;
+
+namespace xcs;
 
 public static class MauiProgram
 {
@@ -12,7 +15,9 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
-
-		return builder.Build();
+		builder.Services.AddSingleton(new Repository());
+   
+        return builder.Build();
 	}
+
 }

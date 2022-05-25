@@ -1,45 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+namespace xcs.Models;
 
-namespace xcs.Models
+
+internal class LoginViewModel : INotifyPropertyChanged
 {
-    internal class LoginViewModel
+    string user;
+    public string User
     {
-        public string User { get; set; }
-        public string Password { get; set; }
-        public Command LoginCommand { get; set; }
-        public Command LogoutCommand { get; set; }
-
-        public LoginViewModel()
-        {
-
-
-            LoginCommand = new Command(Login);
-            LogoutCommand = new Command(Logout);
-        }
-
-        public async void Login()
-        {
-            if (User == "will" && Password == "will")
-            {
-
-                Preferences.Set("SessionStatus", "valid");
-                Application.Current.MainPage = new AppShell();
-
-
-               //await Shell.Current.GoToAsync("MainPage");
-
-
-
-            }
-        }
-        public void Logout()
-        {
-            Preferences.Set("SessionStatus", "expired");
-        }
-
+        get { return user; }
+        set {user = value; OnPropertyChanged(nameof(User));}
     }
+
+    string password;
+    public string Password {
+        get { return password; }
+        set { password = value; OnPropertyChanged(nameof(Password)); }
+    }
+
+
+    public Command LoginCommand { get; set; }
+    public Command LogoutCommand { get; set; }
+
+
+    public LoginViewModel()
+    {
+        LoginCommand = new Command(Login);
+        LogoutCommand = new Command(Logout);
+    }
+    public async void Login()
+    {
+
+        if (User == "will" && Password == "will")
+        {
+            
+            Preferences.Set("SessionStatus", "valid");
+            Preferences.Set("TotalCoins", "1000");
+
+            Application.Current.MainPage = new AppShell();
+            
+            //aqui poner request al server    
+        }
+    }
+    public void Logout()
+    {
+        Preferences.Set("SessionStatus", "expired");
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+    void OnPropertyChanged(string name) =>
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 }

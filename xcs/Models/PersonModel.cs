@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,6 @@ namespace xcs.Models
         }
        
 
-
         string firstName;
         public string FirstName
         {
@@ -42,6 +42,15 @@ namespace xcs.Models
             get { return lastName; }
             set { lastName = value; OnPropertyChanged(nameof(LastName)); }
         }
+
+        //string fullName;
+
+        public string FullName => $"{FirstName} {" "} {LastName}";
+        //public string FullName
+        //{
+        //    get { return fullName; }
+        //  set { fullName = value; OnPropertyChanged(nameof(FullName)); }
+        //}
         string email;
         public string Email
         {
@@ -63,14 +72,14 @@ namespace xcs.Models
             set { coffee = value; OnPropertyChanged(nameof(XipeCoins)); }
         }
 
-        string fullName;
-        public string FullName=> $"{FirstName} {" "} {LastName}";
+        bool talk;
+            public bool Talk
+        {
+            get { return talk; }
+            set { talk = value; OnPropertyChanged(nameof(Talk)); }
+        }
 
-        public ICommand PostAddXc { get; }
-
-
-
-
+   
         public PersonModel()
         {
             
