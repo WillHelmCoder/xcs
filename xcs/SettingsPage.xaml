@@ -4,7 +4,7 @@
              x:Class="xcs.SettingsPage"
              xmlns:local="clr-namespace:xcs"
              xmlns:Mlocal="clr-namespace:xcs.Models"   
-             BackgroundColor="White"
+             
              >
 
     <!--BackgroundColor="{DynamicResource PrimaryColor}">-->
@@ -41,7 +41,7 @@
         
         
         <Label Text="How many days is your cycle?" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"
-               TextColor="#000"               
+                              
                FontSize="Small"
                Grid.Row="0"
                Grid.Column="0">
@@ -49,7 +49,7 @@
         </Label>
 
             <Entry Text="{Binding DaysOfCycle  }" Placeholder="Ex:10" 
-               TextColor="Black" 
+               
                PlaceholderColor="#666"
                Margin="0,0,0,50"
                Grid.Row="1"
@@ -61,7 +61,7 @@
         
         
         <Label Text="When do we start?" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"
-               TextColor="#000"               
+                            
                FontSize="Small"
                Grid.Row="2"
                Grid.Column="0"
@@ -70,7 +70,7 @@
         </Label>
             <Entry Text="{Binding CycleStartingDate }" Placeholder="Starting Date" 
                
-               TextColor="Black"
+               
                PlaceholderColor="#666"
                Margin="0,20,0,0"
                Grid.Row="3"

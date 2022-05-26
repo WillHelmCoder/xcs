@@ -4,11 +4,22 @@
              x:Class="xcs.MainPage"
              xmlns:local="clr-namespace:xcs"
              xmlns:Mlocal="clr-namespace:xcs.Models"   
-             BackgroundColor="White"
+             BackgroundColor="{DynamicResource SecondaryColor}"
              Title="Cycle Information">
-
     
-        <StackLayout>            
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="TransparentButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="BorderColor" Value="Transparent" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <StackLayout>            
             <Grid Margin="0,20,0,0" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="90" />
@@ -24,7 +35,7 @@
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Start"
                         VerticalOptions="Center" 
-                        TextColor="Black"/>
+                       />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                         <Label Text="{Binding DaysLeft, Mode=TwoWay}"
@@ -32,7 +43,7 @@
                          HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Center"
                         VerticalOptions="Center" 
-                        TextColor="Black"/>
+                       />
                     </StackLayout>
                 </StackLayout>
                 <StackLayout Grid.Column="0"
@@ -43,20 +54,20 @@
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Start"
                         VerticalOptions="Center" 
-                        TextColor="Black"/>
+                        />
                     </StackLayout>
                     <StackLayout Orientation="Horizontal">
                     <Label Text="{Binding Account.XipeCoinsGiven, Mode=TwoWay}"                               
                         HorizontalTextAlignment="Center"
                         VerticalOptions="Center"
-                        TextColor="Black"
+                        
                         FontSize="40"/>
                         <Label Text="/" FontSize="40"></Label>
                     <Label Text="{Binding Account.TotalXipeCoins, Mode=TwoWay}"
                         FontSize="40"
                         HorizontalTextAlignment="Center"
                         VerticalOptions="Center" 
-                        TextColor="Black"/>
+                        />
                     </StackLayout>                
                 </StackLayout>
             </Grid>
@@ -120,8 +131,8 @@
                                     VerticalOptions="FillAndExpand"                                                                   
                                     FontSize="Small"
                                     Margin="0,0,0,0"
-                                    BackgroundColor="#fff"
-                                    TextColor="#000"
+                                    Style="{StaticResource TransparentButtonStyle}"                                  
+                                   
                                     Padding="10,0,0,0"
                                     HorizontalOptions="Start"
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type Mlocal:PersonPageViewModel}}, Path=LaunchModal}"
