@@ -57,22 +57,31 @@ internal class LoginViewModel : INotifyPropertyChanged
 			}
 
 			var token = new JwtSecurityToken(result.Data.Token);
-            var userGuid = token.Payload["usertoken"].ToString();
             var userEmail = token.Payload["useremail"].ToString();
             var userName = token.Payload["username"].ToString();
-            var userRole = token.Payload["userrole"].ToString();
+            //var userGuid = token.Payload["usertoken"].ToString();
+            //var userRole = token.Payload["userrole"].ToString();
 
-            //WE SHOULD SAVE THE TOKEN SOMEWHERE
-			//App.Instance.Properties.Add("Token", request.Data.Token);
-			//await App.Instance.SavePropertiesAsync();
+			App.Instance.StartSession(result.Data.Token);
+			Preferences.Set("AuthToken", result.Data.Token);
+			Preferences.Set("UserName", userName);
+			Preferences.Set("UserEmail", userEmail);
 
-            //HANDLE REDIRECTION
+			Preferences.Set("SessionStatus", "expired");
+
+			//HANDLE REDIRECTION
 		}
 	}
     public void Logout()
     {
         Preferences.Set("SessionStatus", "expired");
-    }
+		
+        Preferences.Remove("AuthToken");
+        Preferences.Remove("UserName");
+        Preferences.Remove("UserEmail");
+
+		App.Instance.Logout();
+	}
 
     public event PropertyChangedEventHandler PropertyChanged;
     void OnPropertyChanged(string name) =>

@@ -41,7 +41,7 @@ public partial class App : Application
 
 	readonly RestClient Client;
 	readonly string BaseUrl;
-	readonly string AuthorizationToken;
+	string AuthToken;
 
 	public async Task<RestResponse<T>> Send<T>(string url, Method method = Method.Get, object data = null)
 	{
@@ -58,11 +58,21 @@ public partial class App : Application
 		request.AddHeader("Content-Type", "application/json");
 		request.AddHeader("X-Requested-With", "Requestor");
 
-		if (!string.IsNullOrWhiteSpace(AuthorizationToken))
-			request.AddHeader("authorization", $"bearer {AuthorizationToken}");
+		if (!string.IsNullOrWhiteSpace(AuthToken))
+			request.AddHeader("authorization", $"bearer {AuthToken}");
 
 		return await Client.ExecuteAsync<T>(request);
 	}
+	public void StartSession(string authToken)
+	{
+		AuthToken = authToken;
+	}
+	public void Logout()
+	{
+		AuthToken = null;
+		//Client.CookieContainer.Clear();
+	}
+
 	public ErrorModel GetErrorModel(string content)
 	{
 		var model = new ErrorModel { Error = "Error inesperado" };
