@@ -1,4 +1,7 @@
 ﻿using System.ComponentModel;
+using System.IdentityModel.Tokens.Jwt;
+using xcs.DTO.Account;
+
 namespace xcs.Models;
 
 
@@ -37,10 +40,35 @@ internal class LoginViewModel : INotifyPropertyChanged
             Preferences.Set("TotalCoins", "1000");
 
             Application.Current.MainPage = new AppShell();
-            
-            //aqui poner request al server    
-        }
-    }
+         
+            var dto = new PostLoginInput
+			{
+                Email = User,
+                Password = Password
+			};
+
+            var result = await App.Instance.Send<LoginResponse>("api/login", RestSharp.Method.Post, dto);
+
+            if (!result.IsSuccessful)
+			{
+                //HANDLE ERRORS
+                //var errorModel = App.Instance.GetErrorModel(result.Content);
+                //ShowAlert(errorModel.Error);
+			}
+
+			var token = new JwtSecurityToken(result.Data.Token);
+            var userGuid = token.Payload["usertoken"].ToString();
+            var userEmail = token.Payload["useremail"].ToString();
+            var userName = token.Payload["username"].ToString();
+            var userRole = token.Payload["userrole"].ToString();
+
+            //WE SHOULD SAVE THE TOKEN SOMEWHERE
+			//App.Instance.Properties.Add("Token", request.Data.Token);
+			//await App.Instance.SavePropertiesAsync();
+
+            //HANDLE REDIRECTION
+		}
+	}
     public void Logout()
     {
         Preferences.Set("SessionStatus", "expired");
