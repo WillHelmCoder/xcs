@@ -7,7 +7,7 @@ namespace xcs.Models
         public Guid Guid
         {
             get { return guid; }
-            set { guid = value; OnPropertyChanged(nameof(guid)); }
+            set { guid = value; OnPropertyChanged(nameof(Guid)); }
         }
         int id;
         public int Id

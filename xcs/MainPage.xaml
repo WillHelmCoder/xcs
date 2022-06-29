@@ -14,7 +14,7 @@
                 <Setter Property="BorderColor" Value="Transparent" />
                 <Setter Property="BorderWidth" Value="1" />
                 <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
-            </Style>
+            </Style>  
         </ResourceDictionary>
     </ContentPage.Resources>
 
