@@ -67,6 +67,7 @@ public class MyAccountModel : INotifyPropertyChanged
         if (XipeCoinsToGive > 0)
         {
             TotalXipeCoins = TotalXipeCoins - 1;
+            //cambio pendejo
             XipeCoinsGiven = XipeCoinsGiven + 1;
 
         }
