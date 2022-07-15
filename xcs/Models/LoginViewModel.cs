@@ -33,8 +33,8 @@ internal class LoginViewModel : INotifyPropertyChanged
     public async void Login()
     {
 
-        if (User == "will" && Password == "will")
-        {
+        //if (User == "will" && Password == "will")
+        //{
             
             Preferences.Set("SessionStatus", "valid");
             Preferences.Set("TotalCoins", "1000");
@@ -70,7 +70,7 @@ internal class LoginViewModel : INotifyPropertyChanged
 			Preferences.Set("SessionStatus", "expired");
 
 			//HANDLE REDIRECTION
-		}
+		//}
 	}
     public void Logout()
     {
